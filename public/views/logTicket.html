@@ -1,0 +1,35 @@
+<toaster-container></toaster-container>
+<div class="logTicketContainer" style="border-radius: 10px">
+    <form class="logTicketForm">
+        <h1>Log a Ticket 
+        <button ng-click="logOut()" style="padding:5px; float: right" type="submit" class="btn btn-secondary">Log Out</button></h1>
+        <hr>
+        <div style="margin-top: 10px; margin-left: 10px">
+            <div class="form-group">
+              <label>Title:</label>
+              <input id="title" ng-model="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Category:</label><br>
+                <select id="category" ng-model="category" style="border: 1px solid #ced4da; border-radius: .25rem">
+                    <option>IT</option>
+                    <option>Accounts</option>
+                    <option>Sales</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Action Required Before Date:</label><br>
+                <input style="border: 1px solid #ced4da; border-radius: .25rem" id="datepicker" ng-model="date" type="text"/>
+            </div>
+            <div class="form-group">
+              <label>Description:</label>
+              <textarea id="desc" ng-model="desc" class="form-control"></textarea>
+            </div>
+            <button ng-click="submit()" style="float:right" type="submit" class="btn btn-secondary">Submit</button>
+        </div>
+    </form>
+    <form class="ticketSuccess" style="visibility: hidden">
+        <button ng-click="createTicket()" style="padding:5px" type="submit" class="btn btn-secondary">Create Ticket</button><br><br>
+        <button ng-click="logOut()" style="padding:5px;" type="submit" class="btn btn-secondary">Log Out</button></h1>
+    </form>
+</div>

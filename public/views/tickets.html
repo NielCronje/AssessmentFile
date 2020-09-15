@@ -1,0 +1,99 @@
+<!--<toaster-container></toaster-container>-->
+<div style="padding: 25px; color: #666666">
+    <div style="padding: 25px; width: 90%; margin: auto; background-color:#eeeeee; border-radius: 10px">
+        <h1>Tickets<button ng-click="logOut()" style="padding:5px; float:right" type="submit" class="btn btn-secondary">Log Out</button></h1>
+        
+        <hr>
+        <div class="row">
+            <div class="dropdown col-lg-6">
+                <label>Sort:</label>
+                <select id="category" ng-model="category" style="border: 1px solid #ced4da; border-radius: .25rem">
+                    <option id="creation_date" ng-click="sort('Creation Date')">Creation Date</option>
+                    <option id="assigned_date" ng-click="sort('Assigned Date')">Assigned Date</option>
+                    <option id="status_id" ng-click="sort('Status')">Status</option>
+                    <option id="first_name" ng-click="sort('First Name')">First Name</option>
+                    <option id="last_name" ng-click="sort('Last Name')">Last Name</option>
+                </select>
+                <span style="margin-left: 10px">Showing {{(offset*10) + 1}} to {{to}} of {{tickets.tickets.length}}</span>
+            </div>
+            <div class="col-lg-6">
+                <nav aria-label="Page navigation example" style="float:right">
+                    <ul class="pagination">
+                      <li class="page-item"><a id="previous" class="page-link" href="#"  ng-click="next()">Previous</a></li>
+                      <li ng-click="selectPaginate()" ng-repeat="pag in tickets.pagination" class="page-item"><a id="pag{{pag}}" class="page-link" href="#">{{pag}}</a></li>
+                      <li class="page-item"><a id="next" class="page-link" href="#" ng-click="previous()">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="row fa-padding">
+            <div class="col-sm-1" style="padding-left: 35px">
+                <b>ID</b>
+            </div>
+            <div class="col-sm-2">
+                <b>First Name</b>
+            </div>
+            <div class="col-sm-2">
+                <b>Last Name</b>
+            </div>
+            <div class="col-sm-2">
+                <b>Creation Date</b>
+            </div><div class="col-sm-2"  style="padding-left: 0">
+                <b>Assigned Due Date</b>
+            </div>
+            <div class="col-sm-2">
+                <b>Status</b>
+            </div>
+            <div class="col-sm-1">
+                
+            </div>
+        </div>
+        <ul class="list-group fa-padding">
+            <li ng-repeat="ticket in tickets.tickets" class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-1">
+                        #{{ ticket.id }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ ticket.first_name }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ ticket.last_name }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ ticket.creation_date }}
+                    </div><div class="col-sm-2">
+                        {{ticket.assigned_date}}
+                    </div>
+                    <div class="col-sm-2">
+                        <span ng-if="ticket.status_id == 1" style="width: 100%; padding:5px" class="badge badge-info">Newly Opened</span>
+                        <span ng-if="ticket.status_id == 2" style="width: 100%; padding:5px" class="badge badge-warning">Progressing</span>
+                        <span ng-if="ticket.status_id == 3" style="width: 100%; padding:5px" class="badge badge-success">Resolved</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <i style="padding-top: 5px" id="chevron{{ticket.id}}" class="fa fa-chevron-down" ng-click="collapse(ticket.id)"></i>
+                    </div>
+                </div>
+                <div id="desc{{ticket.id}}" style="display: none">
+                    <hr>
+                    <div class="row" style="margin-left: 10px">
+                        <div class="col-lg-10" style="font-size: 14px">
+                            <span><b>Title:</b> {{ticket.title}}</span><br>
+                            <span><b>Category:</b> {{ticket.category}}</span><br>
+                            <span><b>Description:</b> {{ticket.description}}</span>
+                        </div>
+                        <div class="col-lg-2" style="padding: 10px;">
+                            <button ng-if="user.user_type_id == 2" ng-click="email(ticket.email, ticket.title)" class="pull-right btn btn-secondary"><i class="fa fa-envelope"></i></button>
+                            <label ng-if="user.user_type_id == 3">Update Status:</label>
+                            <select id="statusChange{{ticket.id}}" ng-click="saveId(ticket.id)" ng-if="user.user_type_id == 3" id="category" ng-model="statusChanged" style="border: 1px solid #ced4da; border-radius: .25rem; font-size: 12px">
+                                <option>Newly Opened</option>
+                                <option>Progressing</option>
+                                <option>Resolved</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div style="padding: 25px; color: #666666">
+    <div style="padding: 25px; width: 90%; margin: auto; background-color:#eeeeee; border-radius: 10px">
+        <h1>Complex Query<button ng-click="manipulate()" style="float: right" class="btn btn-secondary">File Manipulation</button></h1>
+        
+        <hr>
+        <span style="padding-left: 15px">Filters:</span>
+        <div class="row" style="padding: 10px">
+            <div class="col-lg-3"><button type="button" class="btn btn-primary btn-sm" ng-click="complexQuery('Animals')">Animal Lovers 1 Document</button></div>
+            <div class="col-lg-3"><button type="button" class="btn btn-info btn-sm"  ng-click="complexQuery('ChildrenSport')">Children & Sport Lovers</button></div>
+            <div class="col-lg-3"><button type="button" class="btn btn-success btn-sm"  ng-click="complexQuery('MultipleInterest')">5 / 6 interests</button></div>
+            <div class="col-lg-3"><button type="button" class="btn btn-danger btn-sm"  ng-click="complexQuery([])">Reset Filter</button></div>
+        </div>
+        <table style="width: 100%; border: 1px solid #666666">
+            <thead style="background-color: #666666; color: #ffffff;">
+              <tr>
+                <th style="padding: 5px;">Person Name</th>
+                <th>Interests</th>
+                <th>Documents</th>
+              </tr>
+            </thead>
+            <tbody style="font-size: 15px !important">
+                <tr ng-if="value.length != 0" ng-repeat="(key,value) in list track by $index" style="border-bottom: 1px solid #666666">
+                    <td style="width:20%; font-size: 15px; padding: 20px; border-right: 1px solid #666666">{{key}}</td>    
+                    <td colspan="2" style="width:80%; padding:0">
+                        <table style="width: 100%;font-size: 15px !important; padding: 0">
+                            <tr ng-repeat="item in value">
+                                <td style="padding: 2px 2px 2px 20px; border-right: 1px solid #666666; width:30%">{{item.interest}}</td>
+                                <td style="width:70%;  padding:0">
+                                    <table style="width: 100%">
+                                        <tr ng-repeat="document in item.documents">
+                                            <td style=" border-right: 1px solid #666666; padding: 2px 2px 2px 20px">{{document}}</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

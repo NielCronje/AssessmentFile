@@ -1,0 +1,25 @@
+<form name="form.userForm" ng-submit="submitForm()" novalidate style="padding: 20px 20px 0 20px; color: #666666"> 
+    <div class="modal-body">
+        <!-- To -->
+        <div class="form-group">
+            <label>To</label>
+            <input type="text" name="name" class="form-control" ng-model="data.name" required>
+        </div>
+
+        <!-- Subject -->
+        <div class="form-group">
+            <label>Subject</label>
+            <input type="text" class="form-control" ng-model="data.title" ng-minlength="3" ng-maxlength="8" required>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group">
+            <textarea name="email" class="form-control" ng-model="data.email" required></textarea>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" ng-click="sendEmail()">OK</button>
+        <button class="btn btn-neutral" style="border: 1px solid #eeeeee" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

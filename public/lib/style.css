@@ -1,0 +1,63 @@
+.logininput {
+    padding:7px;
+}
+.logincard {
+    width: 35%;
+    margin: auto; 
+    top: 30%;
+    background-color: rgba(0,0,0,0.5) !important
+}
+
+.modal-backdrop {
+    opacity: 0.5 !important;
+}
+
+.modal.fade.in {
+    opacity: 1 !important;
+    top: 20%;
+}
+
+.logTicketForm {
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 25px 25px 50px 25px;
+    border-radius: 10px;
+}
+
+.logTicketContainer{
+    background-color: #eeeeee;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    margin-top: 5%;
+    height: 90%;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #666666 !important;
+    text-decoration: none !important;
+    background-color: #eeeeee !important;
+    border-radius: 10px !important;
+    margin: auto !important;
+    width: 95% !important;
+}
+
+.page-link {
+    color: #666666 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #eeeeee !important;
+}
+
+.page-link.active,  .page-link:active{
+    color: #ffffff !important;
+    background-color: #6c757d !important;
+    border: 1px solid #ffffff !important;
+}
+
+.disabled {
+    pointer-events:none;
+    cursor: not-allowed;
+}
+
